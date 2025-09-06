@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exam Timetable - Shreyarth University</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brown: {
+              50: '#fdf8f6',
+              100: '#f2e8e5',
+              200: '#eaddd7',
+              300: '#e0cec7',
+              400: '#d2bab0',
+              500: '#bfa094',
+              600: '#a18072',
+              700: '#977669',
+              800: '#846358',
+              900: '#43302b',
+            },
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    .active-tab {
+      background-color: #846358 !important;
+      transform: scale(1.05);
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    }
+    .exam-card {
+      transition: all 0.3s ease;
+    }
+    .exam-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    }
+    .download-btn {
+      transition: all 0.3s ease;
+    }
+    .download-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 10px -2px rgba(0, 0, 0, 0.2);
+    }
+  </style>
+</head>
+<body class="bg-brown-50 text-gray-900 min-h-screen flex flex-col">
+  <!-- Header -->
+  <header class="bg-purple-800 text-white p-4 text-center text-xl font-bold shadow-lg flex items-center justify-center">
+    <i class="fas fa-university mr-3"></i>
+    <span>Shreyarth University – Exam Timetable (Sept 2025)</span>
+  </header>
+
+  <!-- Main Content -->
+  <main class="flex-grow container mx-auto px-4 py-6">
+    <!-- Tab Navigation -->
+    <div class="flex justify-center mt-4 space-x-4 px-4">
+      <button onclick="showTable('bba')" id="bba-tab" class="px-6 py-3 bg-brown-600 text-white rounded-lg flex items-center transition-all duration-300 active-tab">
+        <i class="fas fa-chart-line mr-2"></i>
+        <span>BBA / MBA</span>
+      </button>
+      <button onclick="showTable('bcom')" id="bcom-tab" class="px-6 py-3 bg-brown-400 text-white rounded-lg flex items-center transition-all duration-300">
+        <i class="fas fa-calculator mr-2"></i>
+        <span>B.Com</span>
+      </button>
+    </div>
+
+    <!-- Info Banner -->
+    <div class="mt-6 bg-brown-100 border-l-4 border-brown-600 text-brown-800 p-4 rounded shadow-sm">
+      <div class="flex items-start">
+        <div class="flex-shrink-0">
+          <i class="fas fa-info-circle text-brown-600 mt-1"></i>
+        </div>
+        <div class="ml-3">
+          <p class="text-sm">
+            <span class="font-bold">Note:</span> All exams will be conducted in the respective department halls. Please carry your university ID card.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Download Button -->
+    <div class="mt-6 flex justify-center">
+      <button id="download-btn" class="download-btn bg-brown-700 hover:bg-brown-800 text-white font-bold py-3 px-6 rounded-lg flex items-center shadow-md">
+        <i class="fas fa-download mr-2"></i>
+        Download Timetable as Image
+      </button>
+    </div>
+
+    <!-- BBA Table -->
+    <div id="bba" class="mt-6">
+      <h2 class="text-xl font-semibold mb-4 flex items-center text-brown-800">
+        <i class="fas fa-graduation-cap mr-2"></i>
+        BBA, BBA (Hons.), Integrated BBA–MBA
+      </h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <!-- Exam Card 1 -->
+        <div class="exam-card bg-white rounded-lg shadow-lg p-4 border-l-4 border-purple-600">
+          <div class="flex justify-between items-start">
+            <div>
+              <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-purple-100 text-purple-800">
+                <i class="fas fa-calendar-alt mr-1"></i>
+                15.09.2025
+              </span>
+              <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-brown-100 text-brown-800 ml-2">
+                <i class="fas fa-clock mr-1"></i>
+                2:00 - 4:00 pm
+              </span>
+            </div>
+            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800">
+              VAC101-1C
+            </span>
+          </div>
+          <h3 class="mt-3 text-lg font-medium">Basics of Yoga</h3>
+          <div class="mt-2 flex items-center text-sm text-gray-500">
+            <i class="fas fa-map-marker-alt mr-1"></i>
+            Yoga & Wellness Hall
+          </div>
+        </div>
+        
+        <!-- Exam Card 2 -->
+        <div class="exam-card bg-white rounded-lg shadow-lg p-4 border-l-4 border-purple-600">
+          <div class="flex justify-between items-start">
+            <div>
+              <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-purple-100 text-purple-800">
+                <i class="fas fa-calendar-alt mr-1"></i>
+                16.09.2025
+              </span>
+              <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-brown-100 text-brown-800 ml-2">
+                <i class="fas fa-clock mr-1"></i>
+                2:00 - 4:00 pm
+              </span>
+            </div>
+            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800">
+              AEC103-1C
+            </span>
+          </div>
+          <h3 class="mt-3 text-lg font-medium">Communication Skills</h3>
+          <div class="mt-2 flex items-center text-sm text-gray-500">
+            <i class="fas fa-map-marker-alt mr-1"></i>
+            Language Lab, Block B
+          </div>
+        </div>
+        
+        <!-- Exam Card 3 -->
+        <div class="exam-card bg-white rounded-lg shadow-lg p-4 border-l-4 border-purple-600">
+          <div class="flex justify-between items-start">
+            <div>
+              <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-purple-100 text-purple-800">
+                <i class="fas fa-calendar-alt mr-1"></i>
+                17.09.2025
+              </span>
+              <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-brown-100 text-brown-800 ml-2">
+                <i class="fas fa-clock mr-1"></i>
+                2:00 - 4:00 pm
+              </span>
+            </div>
+            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800">
+              MDC104-1C
+            </span>
+          </div>
+          <h3 class="mt-3 text-lg font-medium">Banking and Financial Services</h3>
+          <div class="mt-2 flex items-center text-sm text-gray-500">
+            <i class="fas fa-map-marker-alt mr-1"></i>
+            Finance Hall, Block C
+          </div>
+        </div>
+        
+        <!-- Exam Card 4 -->
+        <div class="exam-card bg-white rounded-lg shadow-lg p-4 border-l-4 border-purple-600">
+          <div class="flex justify-between items-start">
+            <div>
+              <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-purple-100 text-purple-800">
+                <i class="fas fa-calendar-alt mr-1"></i>
+                18.09.2025
+              </span>
+              <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-brown-100 text-brown-800 ml-2">
+                <i class="fas fa-clock mr-1"></i>
+                2:00 - 4:00 pm
+              </span>
+            </div>
+            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800">
+              MGM102-1C
+            </span>
+          </div>
+          <h3 class="mt-3 text-lg font-medium">Business Statistics</h3>
+          <div class="mt-2 flex items-center text-sm text-gray-500">
+            <i class="fas fa-map-marker-alt mr-1"></i>
+            Main Examination Hall
+          </div>
+        </div>
+
+        <!-- Exam Card 5 -->
+        <div class="exam-card bg-white rounded-lg shadow-lg p-4 border-l-4 border-purple-600">
+          <div class="flex justify-between items-start">
+            <div>
+              <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-purple-100 text-purple-800">
+                <i class="fas fa-calendar-alt mr-1"></i>
+                19.09.2025
+              </span>
+              <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-brown-100 text-brown-800 ml-2">
+                <i class="fas fa-clock mr-1"></i>
+                2:00 - 4:00 pm
+              </span>
+            </div>
+            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800">
+              MGE101-1C
+            </span>
+          </div>
+          <h3 class="mt-3 text-lg font-medium">Principles of Macro Economics</h3>
+          <div class="mt-2 flex items-center text-sm text-gray-500">
+            <i class="fas fa-map-marker-alt mr-1"></i>
+            Economics Hall, Block A
+          </div>
+        </div>
+
+        <!-- Exam Card 6 -->
+        <div class="exam-card bg-white rounded-lg shadow-lg p-4 border-l-4 border-purple-600">
+          <div class="flex justify-between items-start">
+            <div>
+              <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-purple-100 text-purple-800">
+                <i class="fas fa-calendar-alt mr-1"></i>
+                22.09.2025
+              </span>
+              <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-brown-100 text-brown-800 ml-2">
+                <i class="fas fa-clock mr-1"></i>
+                2:00 - 4:00 pm
+              </span>
+            </div>
+            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800">
+              MKM101-1C
+            </span>
+          </div>
+          <h3 class="mt-3 text-lg font-medium">Marketing Management and Practice</h3>
+          <div class="mt-2 flex items-center text-sm text-gray-500">
+            <i class="fas fa-map-marker-alt mr-1"></i>
+            Marketing Hall, Block D
+          </div>
+        </div>
+
+        <!-- Exam Card 7 -->
+        <div class="exam-card bg-white rounded-lg shadow-lg p-4 border-l-4 border-purple-600">
+          <div class="flex justify-between items-start">
+            <div>
+              <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-purple-100 text-purple-800">
+                <i class="fas fa-calendar-alt mr-1"></i>
+                23.09.2025
+              </span>
+              <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-brown-100 text-brown-800 ml-2">
+                <i class="fas fa-clock mr-1"></i>
+                2:00 - 4:00 pm
+              </span>
+            </div>
+            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800">
+              SEC103-1C
+            </span>
+          </div>
+          <h3 class="mt-3 text-lg font-medium">Leadership Skills</h3>
+          <div class="mt-2 flex items-center text-sm text-gray-500">
+            <i class="fas fa-map-marker-alt mr-1"></i>
+            Seminar Hall, Main Building
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- B.Com Table -->
+    <div id="bcom" class="mt-6 hidden">
+      <h2 class="text-xl font-semibold mb-4 flex items-center text-brown-800">
+        <i class="fas fa-graduation-cap mr-2"></i>
+        B.Com (Hons.)
+      </h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <!-- Exam Card 1 -->
+        <div class="exam-card bg-white rounded-lg shadow-lg p-4 border-l-4 border-purple-600">
+          <div class="flex justify-between items-start">
+            <div>
+              <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-purple-100 text-purple-800">
+                <i class="fas fa-calendar-alt mr-1"></i>
+                15.09.2025
+              </span>
+              <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-brown-100 text-brown-800 ml-2">
+                <i class="fas fa-clock mr-1"></i>
+                2:00 - 4:00 pm
+              </span>
+            </div>
+            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800">
+              FIM103-1C
+            </span>
+          </div>
+          <h3 class="mt-3 text-lg font-medium">Advanced Financial Accounting</h3>
+          <div class="mt-2 flex items-center text-sm text-gray-500">
+            <i class="fas fa-map-marker-alt mr-1"></i>
+            Commerce Block, Hall A
+          </div>
+        </div>
+        
+        <!-- Exam Card 2 -->
+        <div class="exam-card bg-white rounded-lg shadow-lg p-4 border-l-4 border-purple-600">
+          <div class="flex justify-between items-start">
+            <div>
+              <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-purple-100 text-purple-800">
+                <i class="fas fa-calendar-alt mr-1"></i>
+                16.09.2025
+              </span>
+              <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-brown-100 text-brown-800 ml-2">
+                <i class="fas fa-clock mr-1"></i>
+                2:00 - 4:00 pm
+              </span>
+            </div>
+            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800">
+              BCM101-1C
+            </span>
+          </div>
+          <h3 class="mt-3 text-lg font-medium">Business Regulatory Framework</h3>
+          <div class="mt-2 flex items-center text-sm text-gray-500">
+            <i class="fas fa-map-marker-alt mr-1"></i>
+            Commerce Block, Hall B
+          </div>
+        </div>
+        
+        <!-- Exam Card 3 -->
+        <div class="exam-card bg-white rounded-lg shadow-lg p-4 border-l-4 border-purple-600">
+          <div class="flex justify-between items-start">
+            <div>
+              <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-purple-100 text-purple-800">
+                <i class="fas fa-calendar-alt mr-1"></i>
+                17.09.2025
+              </span>
+              <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-brown-100 text-brown-800 ml-2">
+                <i class="fas fa-clock mr-1"></i>
+                2:00 - 4:00 pm
+              </span>
+            </div>
+            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800">
+              SEC105-1C
+            </span>
+          </div>
+          <h3 class="mt-3 text-lg font-medium">Computer Based Accounting (Practical)</h3>
+          <div class="mt-2 flex items-center text-sm text-gray-500">
+            <i class="fas fa-map-marker-alt mr-1"></i>
+            Computer Lab, Block E
+          </div>
+        </div>
+        
+        <!-- Exam Card 4 -->
+        <div class="exam-card bg-white rounded-lg shadow-lg p-4 border-l-4 border-purple-600">
+          <div class="flex justify-between items-start">
+            <div>
+              <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-purple-100 text-purple-800">
+                <i class="fas fa-calendar-alt mr-1"></i>
+                18.09.2025
+              </span>
+              <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-brown-100 text-brown-800 ml-2">
+                <i class="fas fa-clock mr-1"></i>
+                2:00 - 4:00 pm
+              </span>
+            </div>
+            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800">
+              STE103-1C
+            </span>
+          </div>
+          <h3 class="mt-3 text-lg font-medium">Business Statistics - II</h3>
+          <div class="mt-2 flex items-center text-sm text-gray-500">
+            <i class="fas fa-map-marker-alt mr-1"></i>
+            Main Examination Hall
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-purple-900 text-white text-center p-4 mt-8">
+    <div class="flex flex-col md:flex-row justify-center items-center mb-2">
+      <div class="flex items-center mx-4 mb-2 md:mb-0">
+        <i class="fas fa-phone-alt mr-2"></i>
+        <span>+91 9876543210</span>
+      </div>
+      <div class="flex items-center mx-4">
+        <i class="fas fa-envelope mr-2"></i>
+        <span>examcell@shreyarthuniversity.edu</span>
+      </div>
+    </div>
+    <p class="text-sm">© 2025 Shreyarth University | Exam Cell</p>
+  </footer>
+
+  <script>
+    // Function to show/hide tables
+    function showTable(id) {
+      // Hide all tables
+      document.getElementById('bba').classList.add('hidden');
+      document.getElementById('bcom').classList.add('hidden');
+      
+      // Show selected table
+      document.getElementById(id).classList.remove('hidden');
+      
+      // Update active tab
+      document.getElementById('bba-tab').classList.remove('active-tab');
+      document.getElementById('bcom-tab').classList.remove('active-tab');
+      document.getElementById('bba-tab').classList.add('bg-brown-400');
+      document.getElementById('bcom-tab').classList.add('bg-brown-400');
+      
+      document.getElementById(id + '-tab').classList.remove('bg-brown-400');
+      document.getElementById(id + '-tab').classList.add('active-tab');
+    }
+
+    // Function to download timetable as image
+    document.getElementById('download-btn').addEventListener('click', function() {
+      // Determine which table is currently visible
+      const visibleTable = document.getElementById('bba').classList.contains('hidden') ? 'bcom' : 'bba';
+      
+      // Create a temporary container for the content to capture
+      const container = document.createElement('div');
+      container.style.backgroundColor = '#fdf8f6'; // Match the background color
+      container.style.padding = '20px';
+      container.style.borderRadius = '8px';
+      container.style.maxWidth = '800px';
+      container.style.margin = '0 auto';
+      
+      // Clone the header
+      const header = document.querySelector('header').cloneNode(true);
+      header.style.marginBottom = '20px';
+      container.appendChild(header);
+      
+      // Clone the visible content
+      const content = document.getElementById(visibleTable).cloneNode(true);
+      container.appendChild(content);
+      
+      // Add university logo text
+      const logo = document.createElement('div');
+      logo.innerHTML = '<p style="text-align: center; margin-top: 20px; font-style: italic; color: #846358;">Shreyarth University Official Timetable</p>';
+      container.appendChild(logo);
+      
+      // Append to body temporarily
+      document.body.appendChild(container);
+      
+      // Use html2canvas to capture the content as an image
+      html2canvas(container, {
+        scale: 2, // Higher quality
+        useCORS: true,
+        logging: false
+      }).then(canvas => {
+        // Convert canvas to data URL
+        const imgData = canvas.toDataURL('image/png');
+        
+        // Create download link
+        const link = document.createElement('a');
+        link.href = imgData;
+        link.download = `Shreyarth_University_Timetable_${visibleTable.toUpperCase()}_Sept_2025.png`;
+        
+        // Trigger download
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        
+        // Remove temporary container
+        document.body.removeChild(container);
+      });
+    });
+  </script>
+</body>
+</html>
